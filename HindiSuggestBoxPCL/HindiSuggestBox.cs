@@ -9,30 +9,20 @@ namespace sourcEleven.UWP.HindiSuggestBoxPCL
     public static class HindiSuggestBox
     {
         private static List<string> _imeResults;
-        private static bool _isImeEnabled;
 
         static HindiSuggestBox()
         {
             _imeResults = new List<string>();
-            _isImeEnabled = false;
         }
 
         public static void EnableHindiIME(this AutoSuggestBox box)
         {
-            if (_isImeEnabled == false)
-            {
                 box.TextChanged += HindiSuggestBox_TextChanged;
-                _isImeEnabled = true;
-            }
         }
 
         public static void DisableHindiIME(this AutoSuggestBox box)
         {
-            if (_isImeEnabled == true)
-            {
                 box.TextChanged -= HindiSuggestBox_TextChanged;
-                _isImeEnabled = false;
-            }
         }
 
         private static async void HindiSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
